@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
-import BarChart from "../components/graphs/BarChart";
+import ActivityChart from "../components/graphs/ActivityChart";
 import LineChart from "../components/graphs/LineChart";
 import RadarChart from "../components/graphs/RadarChart";
 import useFetch from "../hooks/useFetch";
@@ -33,7 +33,7 @@ const Profile = () => {
       )}
       <div className="w-[70%]">
         <div className="mr-[90px] mt-5">
-          <BarChart userId={userId} />
+          <ActivityChart userId={userId} />
         </div>
         <div className="flex gap-4">
           <LineChart userId={userId} />
