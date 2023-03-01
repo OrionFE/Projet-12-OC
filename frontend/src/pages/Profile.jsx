@@ -5,6 +5,7 @@ import SessionsLineChart from "../components/graphs/SessionsLineChart";
 import PerfRadarChart from "../components/graphs/PerfRadarChart";
 import useFetch from "../hooks/useFetch";
 import ScoreRadialBarChart from "../components/graphs/ScoreRadialBarChart";
+import NutriCard from "../components/graphs/NutriCard";
 
 const Profile = () => {
   // http://localhost:3000/user/12 pour nom user / Round chart / calories
@@ -32,14 +33,19 @@ const Profile = () => {
           </p>
         </>
       )}
-      <div className="w-[70%]">
-        <div className="mr-[90px] w-full mt-5">
-          <ActivityChart userId={userId} />
+      <div className="flex gap-[3%] mt-5">
+        <div className="w-[70%]">
+          <div className="mr-[90px] w-full">
+            <ActivityChart userId={userId} />
+          </div>
+          <div className="flex gap-[5%]">
+            <SessionsLineChart userId={userId} />
+            <PerfRadarChart userId={userId} />
+            <ScoreRadialBarChart userId={userId} />
+          </div>
         </div>
-        <div className="flex gap-[5%]">
-          <SessionsLineChart userId={userId} />
-          <PerfRadarChart userId={userId} />
-          <ScoreRadialBarChart userId={userId} />
+        <div className="w-[23%] flex flex-col justify-between">
+          <NutriCard userId={userId} />
         </div>
       </div>
     </div>

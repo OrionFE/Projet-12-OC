@@ -18,6 +18,8 @@ const ScoreRadialBarChart = ({ userId }) => {
     { value: 1 - data.todayScore },
   ];
 
+  console.log(data);
+
   return (
     <div className="mt-6 w-[30%] h-[200px] bg-primaryBg rounded-md relative flex flex-col justify-center">
       <h3 className="text-[#20253A] text-sm  absolute top-[10px] left-[10px]">

@@ -90,6 +90,7 @@ const SessionsLineChart = ({ userId }) => {
             dataKey="sessionLength"
             stroke="url(#whiteGradient)"
             strokeWidth={2}
+            dot={false}
           />
         </LineChart>
       </ResponsiveContainer>

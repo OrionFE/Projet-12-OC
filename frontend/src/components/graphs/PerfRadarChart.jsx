@@ -45,7 +45,7 @@ const PerfRadarChart = ({ userId }) => {
             dataKey="kind"
             stroke="white"
             tickLine={false}
-            fontSize={10}
+            fontSize={8}
             dy={2}
           />
           <Radar dataKey="value" fill="#FF0101" fillOpacity={0.7} />
