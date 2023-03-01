@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import ActivityChart from "../components/graphs/ActivityChart";
 import SessionsLineChart from "../components/graphs/SessionsLineChart";
@@ -8,14 +8,9 @@ import ScoreRadialBarChart from "../components/graphs/ScoreRadialBarChart";
 import NutriCard from "../components/graphs/NutriCard";
 
 const Profile = () => {
-  // http://localhost:3000/user/12 pour nom user / Round chart / calories
-  // http://localhost:3000/user/12/activity pour barchart
-  // http://localhost:3000/user/12/average-sessions pour Line chart
-  // http://localhost:3000/user/12/performance pour Star chart
-
   const { userId } = useParams();
 
-  const { data, loading, error } = useFetch(`${userId}`);
+  const { data, loading, error } = useFetch(`${userId}`, "user");
 
   return (
     <div>

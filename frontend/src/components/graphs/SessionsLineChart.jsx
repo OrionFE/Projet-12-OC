@@ -1,18 +1,20 @@
+// @ts-nocheck
 import useFetch from "../../hooks/useFetch";
 import {
   LineChart,
   Line,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
 
 const SessionsLineChart = ({ userId }) => {
   // @ts-ignore
-  const { data, loading, error } = useFetch(`${userId}/average-sessions`);
+  const { data, loading, error } = useFetch(
+    `${userId}/average-sessions`,
+    "session"
+  );
   const dataGraph = data?.sessions;
 
   const customDayFormatter = (tick) => {

@@ -8,7 +8,10 @@ import {
 } from "recharts";
 
 const PerfRadarChart = ({ userId }) => {
-  const { data, loading, error } = useFetch(`${userId}/performance`);
+  const { data, loading, error } = useFetch(
+    `${userId}/performance`,
+    "performance"
+  );
 
   if (error) {
     return <p>Une erreur est survenu ({error})</p>;

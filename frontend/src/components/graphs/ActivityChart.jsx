@@ -1,5 +1,5 @@
+// @ts-nocheck
 import useFetch from "../../hooks/useFetch";
-import { useState } from "react";
 import {
   BarChart,
   Bar,
@@ -11,7 +11,7 @@ import {
 } from "recharts";
 
 const ActivityChart = ({ userId }) => {
-  const { data, loading, error } = useFetch(`${userId}/activity`);
+  const { data, loading, error } = useFetch(`${userId}/activity`, "activity");
 
   function getFormatDate() {
     if (!data) {

@@ -3,7 +3,7 @@ import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import useFetch from "../../hooks/useFetch";
 
 const ScoreRadialBarChart = ({ userId }) => {
-  const { data, loading, error } = useFetch(`${userId}`);
+  const { data, loading, error } = useFetch(`${userId}`, "user");
 
   if (error) {
     return <p>Une erreur est survenu ({error})</p>;

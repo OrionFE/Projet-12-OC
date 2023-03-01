@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from "react";
 import calIcon from "./../../../public/icons/caloriesIcon.png";
 import protIcon from "../../../public/icons/proteinIcon.png";
@@ -7,7 +8,7 @@ import useFetch from "../../hooks/useFetch";
 import NutriCardMarker from "./NutriCardMarker";
 
 const NutriCard = ({ userId }) => {
-  const { data, loading, error } = useFetch(`${userId}`);
+  const { data, loading, error } = useFetch(`${userId}`, "user");
 
   if (error) {
     return <p>Une erreur est survenu ({error})</p>;
@@ -18,7 +19,6 @@ const NutriCard = ({ userId }) => {
   }
 
   const dataCard = data.keyData;
-  console.log(dataCard);
 
   return (
     <>
