@@ -1,4 +1,15 @@
 import React from "react";
+import PropTypes from "prop-types";
+
+/**
+ * @component
+ * Make a nutri card with 3 props
+ * @param {Object} props
+ * @param {string} props.data
+ * @param {string} props.icon
+ * @param {string} props.type
+ * @returns
+ */
 
 const NutriCardMarker = ({ data, icon, type }) => {
   return (
@@ -12,6 +23,12 @@ const NutriCardMarker = ({ data, icon, type }) => {
       </div>
     </div>
   );
+};
+
+NutriCardMarker.propsType = {
+  data: PropTypes.string,
+  icon: PropTypes.string,
+  type: PropTypes.string,
 };
 
 export default NutriCardMarker;

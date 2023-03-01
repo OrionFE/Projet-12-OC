@@ -1,7 +1,15 @@
 import React from "react";
 import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import useFetch from "../../hooks/useFetch";
+import PropTypes from "prop-types";
 
+/**
+ * @component
+ * Component for the activity chart
+ * @param {Object} props
+ * @param {string} props.userId
+ * @returns {JSX.Element}
+ */
 const ScoreRadialBarChart = ({ userId }) => {
   const { data, loading, error } = useFetch(`${userId}`, "user");
 
@@ -13,12 +21,16 @@ const ScoreRadialBarChart = ({ userId }) => {
     return <p>Chargement ...</p>;
   }
 
+  /**
+   * dataGraph have 2 value :
+   * - first one is a red draw circle to reflect the data
+   * - second one is a transparent circle for the piechart to work
+   */
+
   const dataGraph = [
     { value: data.todayScore },
     { value: 1 - data.todayScore },
   ];
-
-  console.log(data);
 
   return (
     <div className="mt-6 w-[30%] h-[200px] bg-primaryBg rounded-md relative flex flex-col justify-center">
@@ -53,6 +65,10 @@ const ScoreRadialBarChart = ({ userId }) => {
       </div>
     </div>
   );
+};
+
+ScoreRadialBarChart.propsType = {
+  userId: PropTypes.string.isRequired,
 };
 
 export default ScoreRadialBarChart;

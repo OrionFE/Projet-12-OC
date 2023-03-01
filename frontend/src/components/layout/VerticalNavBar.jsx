@@ -9,6 +9,12 @@ import biking from "./../../../public/icons/biking.png";
 import lifting from "./../../../public/icons/lifting.png";
 import { NavLink } from "react-router-dom";
 
+/**
+ * @component
+ * Vertical navigation bar
+ * @returns {JSX.Element}
+ */
+
 const VerticalNavBar = () => {
   return (
     <div className="w-[90px] h-full bg-black absolute top-0 flex flex-col justify-center">

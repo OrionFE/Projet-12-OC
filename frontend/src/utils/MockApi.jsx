@@ -1,3 +1,11 @@
+import PropTypes from "prop-types";
+
+/**
+ * Get data from choosen route
+ * @param {string} route
+ * @returns {{data: object , loading: boolean , error: string}}
+ */
+
 export const mockApi = (route) => {
   const user = {
     data: {
@@ -156,4 +164,8 @@ export const mockApi = (route) => {
   if (route === "session") {
     return session;
   }
+};
+
+mockApi.propsType = {
+  route: PropTypes.string.isRequired,
 };

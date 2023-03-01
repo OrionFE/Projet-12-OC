@@ -6,6 +6,15 @@ import {
   PolarAngleAxis,
   ResponsiveContainer,
 } from "recharts";
+import PropTypes from "prop-types";
+
+/**
+ * @component
+ * Component for the activity chart
+ * @param {Object} props
+ * @param {string} props.userId
+ * @returns {JSX.Element}
+ */
 
 const PerfRadarChart = ({ userId }) => {
   const { data, loading, error } = useFetch(
@@ -29,6 +38,11 @@ const PerfRadarChart = ({ userId }) => {
     5: "Vitesse",
     6: "Intensité",
   };
+
+  /**
+   * Formatting to have an array of { value: data , kind: name_in_french}
+   * @returns {Array<{value: string , kind: string}>}
+   */
 
   const dataGraph = data.data
     .map((item) => {
@@ -56,6 +70,10 @@ const PerfRadarChart = ({ userId }) => {
       </ResponsiveContainer>
     </div>
   );
+};
+
+PerfRadarChart.propsType = {
+  userId: PropTypes.string.isRequired,
 };
 
 export default PerfRadarChart;

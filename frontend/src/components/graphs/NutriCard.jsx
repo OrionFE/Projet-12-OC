@@ -6,6 +6,15 @@ import carbsIcon from "../../../public/icons/carbsIcon.png";
 import fatIcon from "../../../public/icons/fatIcon.png";
 import useFetch from "../../hooks/useFetch";
 import NutriCardMarker from "./NutriCardMarker";
+import PropTypes from "prop-types";
+
+/**
+ * @component
+ * Component for the activity chart
+ * @param {Object} props
+ * @param {string} props.userId
+ * @returns {JSX.Element}
+ */
 
 const NutriCard = ({ userId }) => {
   const { data, loading, error } = useFetch(`${userId}`, "user");
@@ -44,6 +53,10 @@ const NutriCard = ({ userId }) => {
       />
     </>
   );
+};
+
+NutriCard.propsType = {
+  userId: PropTypes.string.isRequired,
 };
 
 export default NutriCard;

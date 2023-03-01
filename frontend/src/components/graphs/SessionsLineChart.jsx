@@ -8,14 +8,28 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import PropTypes from "prop-types";
+
+/**
+ * @component
+ * Component for the activity chart
+ * @param {Object} props
+ * @param {string} props.userId
+ * @returns {JSX.Element}
+ */
 
 const SessionsLineChart = ({ userId }) => {
-  // @ts-ignore
   const { data, loading, error } = useFetch(
     `${userId}/average-sessions`,
     "session"
   );
   const dataGraph = data?.sessions;
+
+  /**
+   * Return the correponding Day in function of the tick
+   * @param {number} tick
+   * @returns {string}
+   */
 
   const customDayFormatter = (tick) => {
     if (tick === 1) {
@@ -98,6 +112,10 @@ const SessionsLineChart = ({ userId }) => {
       </ResponsiveContainer>
     </div>
   );
+};
+
+SessionsLineChart.propsType = {
+  userId: PropTypes.string.isRequired,
 };
 
 export default SessionsLineChart;

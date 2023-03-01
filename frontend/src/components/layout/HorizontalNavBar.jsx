@@ -1,7 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 // @ts-ignore
-import logo from './../../assets/logo.svg'
+import logo from "./../../assets/logo.svg";
+
+/**
+ * @component
+ * Horizontal navigation bar
+ * @returns {JSX.Element}
+ */
 
 const HorizontalNavBar = () => {
   return (

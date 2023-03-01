@@ -1,5 +1,6 @@
 // @ts-nocheck
 import useFetch from "../../hooks/useFetch";
+import PropTypes from "prop-types";
 import {
   BarChart,
   Bar,
@@ -10,8 +11,22 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+/**
+ * @component
+ * Component for the activity chart
+ * @param {Object} props
+ * @param {string} props.userId
+ * @returns {JSX.Element}
+ */
+
 const ActivityChart = ({ userId }) => {
   const { data, loading, error } = useFetch(`${userId}/activity`, "activity");
+
+  /**
+   * Return the same data but the date is in the correct form ( from dd-mm-yyyy to number of the day)
+   *
+   * @returns {Array.<Object>}
+   */
 
   function getFormatDate() {
     if (!data) {
@@ -113,6 +128,10 @@ const ActivityChart = ({ userId }) => {
       </ResponsiveContainer>
     </div>
   );
+};
+
+ActivityChart.propsType = {
+  userId: PropTypes.string.isRequired,
 };
 
 export default ActivityChart;

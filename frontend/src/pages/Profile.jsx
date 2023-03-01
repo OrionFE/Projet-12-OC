@@ -7,6 +7,12 @@ import useFetch from "../hooks/useFetch";
 import ScoreRadialBarChart from "../components/graphs/ScoreRadialBarChart";
 import NutriCard from "../components/graphs/NutriCard";
 
+/**
+ * @component
+ * Profile page
+ * @returns {JSX.Element}
+ */
+
 const Profile = () => {
   const { userId } = useParams();
 
