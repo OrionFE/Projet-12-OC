@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import ActivityChart from "../components/graphs/ActivityChart";
-import LineChart from "../components/graphs/LineChart";
-import RadarChart from "../components/graphs/RadarChart";
+import SessionsLineChart from "../components/graphs/SessionsLineChart";
+import PerfRadarChart from "../components/graphs/PerfRadarChart";
 import useFetch from "../hooks/useFetch";
+import ScoreRadialBarChart from "../components/graphs/ScoreRadialBarChart";
 
 const Profile = () => {
   // http://localhost:3000/user/12 pour nom user / Round chart / calories
@@ -32,12 +33,13 @@ const Profile = () => {
         </>
       )}
       <div className="w-[70%]">
-        <div className="mr-[90px] mt-5">
+        <div className="mr-[90px] w-full mt-5">
           <ActivityChart userId={userId} />
         </div>
-        <div className="flex gap-4">
-          <LineChart userId={userId} />
-          <RadarChart userId={userId} />
+        <div className="flex gap-[5%]">
+          <SessionsLineChart userId={userId} />
+          <PerfRadarChart userId={userId} />
+          <ScoreRadialBarChart userId={userId} />
         </div>
       </div>
     </div>

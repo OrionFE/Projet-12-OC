@@ -1,22 +1,17 @@
-import React, { useEffect, useRef } from "react";
 import useFetch from "../../hooks/useFetch";
 import { useState } from "react";
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
 
 const ActivityChart = ({ userId }) => {
   const { data, loading, error } = useFetch(`${userId}/activity`);
-  const svgRef = useRef();
-  const [tooltipBox, setTooltipBox] = useState(null);
 
   function getFormatDate() {
     if (!data) {
@@ -40,11 +35,9 @@ const ActivityChart = ({ userId }) => {
     return array;
   }
   const dataGraph = getFormatDate();
-  console.log(dataGraph);
 
   const h = 250;
   const w = 550;
-  const margin = 30;
 
   const CustomTooltip = ({ payload, active }) => {
     if (active) {
@@ -57,8 +50,16 @@ const ActivityChart = ({ userId }) => {
     }
   };
 
+  if (error) {
+    return <p>Une erreur est survenu ({error})</p>;
+  }
+
+  if (loading) {
+    return <p>Chargement ...</p>;
+  }
+
   return (
-    <div className="h-[280px] w-full bg-primaryBg pl-5 ">
+    <div className="h-full w-full bg-primaryBg pl-5 ">
       <div className="flex justify-between mb-6 pt-4">
         <h3 className="font-semibold ">Activité quotidienne</h3>
         <div className="text-[#74798C] text-xs flex gap-2">
@@ -76,7 +77,7 @@ const ActivityChart = ({ userId }) => {
           </div>
         </div>
       </div>
-      <ResponsiveContainer width="99%" height={200}>
+      <ResponsiveContainer width="100%" height={200}>
         <BarChart width={w} height={h} data={dataGraph} barGap={10}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
           <XAxis dataKey="day" tickLine={false} />
@@ -94,13 +95,7 @@ const ActivityChart = ({ userId }) => {
             hide={true}
             yAxisId="kcal"
           />
-          <Tooltip
-            content={
-              <// @ts-ignore
-              CustomTooltip
-              />
-            }
-          />
+          <Tooltip content={<CustomTooltip />} />
           <Bar
             dataKey="kilogram"
             fill="#282D30"
